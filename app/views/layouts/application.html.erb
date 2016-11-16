@@ -9,6 +9,38 @@
   </head>
 
   <body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="user-info"><%= link_to "Blocipedia", root_path %> </li>
+      <li class="pull-right user-info">
+        <% if user_signed_in? %>
+            <div class="pull-right user-info">
+              <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+            </div>
+        <% else %>
+            <div class="user-info">
+              <%= link_to "Sign In", new_user_session_path %> or
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </div>
+        <% end %>
+      </li>
+    </ul>
+    <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+    <% elsif flash.now[:alert] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash.now[:alert] %>
+        </div>
+    <% elsif flash[:alert] %>
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    <% end %>
     <%= yield %>
+  </div>
   </body>
 </html>
