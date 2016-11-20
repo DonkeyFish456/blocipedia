@@ -1,5 +1,7 @@
 class WikisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  after_action :verify_authorized, only: [:destroy]
+
 
   def index
     @wikis = Wiki.all
@@ -38,7 +40,6 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
-    @wiki.user_id = current_user.id
 
     if @wiki.save
       flash[:notice] = 'Wiki was updated'
@@ -51,10 +52,11 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully"
-      redirect_to root_path
+      redirect_to wikis_path
     else
       flash.now[:alert] = 'There was an error was deleting the wiki.'
       render :show

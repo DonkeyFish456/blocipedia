@@ -21,6 +21,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.2'
+gem 'factory_girl_rails', '~> 4.0'
+gem 'rails-controller-testing'
+gem 'pundit'
 
 group :production do
   'pg'
