@@ -24,6 +24,7 @@ gem 'devise', '~> 4.2'
 gem 'factory_girl_rails', '~> 4.0'
 gem 'rails-controller-testing'
 gem 'pundit'
+gem 'faker'
 
 group :production do
   'pg'

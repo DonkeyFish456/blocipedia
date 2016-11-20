@@ -8,7 +8,27 @@
 User.create!(
         username: 'stan',
         email:  'stancalderon@gmail.com',
-        password: 'password'
+        password: 'password',
+        role: 'admin'
 )
+25.times do
+  User.create!(
+      username: Faker::Internet.user_name,
+      email:  Faker::Internet.email,
+      password: Faker::Internet.password,
+      confirmed_at: Faker::Time.between(10.days.ago, Date.today, :all)
+  )
+end
 
-puts 'Added 1 user'
+25.times do
+  Wiki.create!(
+          title: Faker::Hacker.say_something_smart,
+          body: Faker::Lorem.paragraph,
+          private: false,
+          user_id: Faker::Number.between(1, 25)
+  )
+end
+
+
+puts "Added #{User.count} users"
+puts "Added #{Wiki.count} wiki's"
