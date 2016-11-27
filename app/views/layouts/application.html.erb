@@ -14,12 +14,19 @@
       <li class="user-info"><%= link_to "Blocipedia", root_path %> </li>
       <li class="user-info"><%= link_to "Wiki's", wikis_path %> </li>
       <li class="user-info"><%= link_to "Users", users_path %> </li>
-      <li class="pull-right user-info">
+      <li class="user-info pull-right">
         <% if user_signed_in? %>
-            <div class="pull-right user-info">
-              <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-              <%= current_user.username %>
-            </div>
+            <div class="user-info pull-right">
+            <li class="user-info pull-right">
+              <a class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.username %></a>
+              <ul class="dropdown-menu">
+                <div class="account-container">
+                  <li class="account-info username"><%= current_user.username %> - <%= current_user.role.capitalize %></li>
+                  <li class="account-info email"><%= current_user.email %></li>
+                </div>
+                <li><%= link_to 'Account Settings', user_path(current_user.id) %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              </ul>
         <% else %>
             <div class="user-info">
               <%= link_to "Sign In", new_user_session_path %> or

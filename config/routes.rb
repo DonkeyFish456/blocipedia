@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :wikis
   resources :users
+  resources :charges
+  resources :subscribers
 
   get 'welcome/index'
 

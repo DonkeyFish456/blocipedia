@@ -25,6 +25,8 @@ gem 'factory_girl_rails', '~> 4.0'
 gem 'rails-controller-testing'
 gem 'pundit'
 gem 'faker'
+gem 'stripe'
+gem 'figaro'
 
 group :production do
   'pg'
