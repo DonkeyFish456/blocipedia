@@ -23,6 +23,7 @@
 .idea/*
 /idea/*
 /idea/workspace.xml
+.idea/workspace.xml
 # Ignore application configuration
 /config/application.yml
 
