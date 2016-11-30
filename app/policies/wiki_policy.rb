@@ -7,7 +7,6 @@ class WikiPolicy
   end
 
   def destroy?
-    user.admin? || wiki.user == @current_user
+    @user.admin? || @user == @wiki.user
   end
-
 end

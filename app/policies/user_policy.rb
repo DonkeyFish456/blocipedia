@@ -9,5 +9,4 @@ class UserPolicy
   def show?
     @current_user.admin? || @current_user == @user
   end
-
 end

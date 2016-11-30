@@ -2,9 +2,12 @@ class WikisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   after_action :verify_authorized, only: [:destroy]
 
-
   def index
-    @wikis = Wiki.all
+    if user_signed_in? && (current_user.admin? || current_user.premium?)
+      @wikis = Wiki.all
+    else
+      @wikis = Wiki.private?
+    end
   end
 
   def show

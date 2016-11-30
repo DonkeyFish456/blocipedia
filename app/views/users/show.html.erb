@@ -46,7 +46,7 @@
               <div class="card card-block">
                 <h3 class="card-title">Standard</h3>
                 <p class="card-text">Create and edit public Wiki's</p>
-                <%= link_to "Free Account", subscriber_path(1), method: :delete, class: 'btn btn-primary' %>
+                <%= link_to "Free Account", subscriber_path(1), method: :delete, class: 'btn btn-primary', data: {confirm: 'Downgrading to a free account will make your private wikis public. Do you want to continue?'}%>
               </div>
             </div>
           <% end %>

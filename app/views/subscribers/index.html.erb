@@ -1,4 +1,4 @@
-<%= form_tag subscribers_path(current_user.id), :method => :put do %>
+<%= form_tag subscribers_path(1), :method => :put do %>
     <% @plans.each do |plan| %>
         <div class="plan">
           <h1><%= plan[:name] %></h1>

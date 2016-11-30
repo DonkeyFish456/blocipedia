@@ -10,7 +10,6 @@ class SubscribersController < ApplicationController
   end
 
   def update
-
     token = params[:stripeToken]
     plan_id = params[:plan_id]
     plan = Stripe::Plan.retrieve(plan_id)
@@ -50,13 +49,11 @@ class SubscribersController < ApplicationController
   end
 
   def destroy
-
     token = params[:stripeToken]
     plan_id = '1001'
     plan = Stripe::Plan.retrieve(plan_id)
     role = 'member'
     proration_date = Time.now.to_i
-
 
     if current_user.subscribed
       customer = Stripe::Customer.retrieve(current_user.stripeid)
@@ -78,6 +75,7 @@ class SubscribersController < ApplicationController
       sub_id = sub['subscriptions']['data'][0]['id']
     end
 
+    make_wikis_public(current_user.wiki)
     current_user.subscribed = true
     current_user.stripeid = customer.id
     current_user.planid = plan_id
@@ -86,5 +84,14 @@ class SubscribersController < ApplicationController
     current_user.save
 
     redirect_to user_path(current_user.id), :notice => "You are now a basic member!"
+  end
+
+  private
+
+  def make_wikis_public(wiki)
+    for i in wiki do
+      i['private'] = false
+      i.save
+    end
   end
 end

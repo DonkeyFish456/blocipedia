@@ -9,7 +9,8 @@ User.create!(
         username: 'stan',
         email:  'stancalderon@gmail.com',
         password: 'password',
-        role: 'admin'
+        role: 'admin',
+        confirmed_at: Faker::Time.between(10.days.ago, Date.today, :all)
 )
 25.times do
   User.create!(
