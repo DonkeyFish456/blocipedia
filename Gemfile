@@ -27,6 +27,7 @@ gem 'pundit'
 gem 'faker'
 gem 'stripe'
 gem 'figaro'
+gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 
 group :production do
   'pg'

@@ -22,10 +22,9 @@ class SubscribersController < ApplicationController
 
   private
 
-  def make_wikis_public(wiki)
-    for i in wiki do
-      i['private'] = false
-      i.save
+  def make_wikis_public(wikis)
+    wikis.each do |wiki|
+      wiki.update_attribute(:private, false)
     end
   end
 
