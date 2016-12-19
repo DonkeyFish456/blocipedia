@@ -13,12 +13,12 @@
         Email: <%= @user.email %>
         <br>
         Status: <%= @user.role %>
-        <% if @user.wiki.last  %>
+        <% if @user.wikis  %>
           <div class="card">
             <div class="card-block">
               <h4 class="card-title">Last Wiki</h4>
-              <p class="card-text"><%= link_to @user.wiki.last.title, wiki_path(@user.wiki.last.id) %></p>
-              <sub>Created on: <%= @user.wiki.last.created_at %></sub>
+              <p class="card-text"><%= link_to @user.wikis.last.title, wiki_path(@user.wikis.last.id) %></p>
+              <sub>Created on: <%= @user.wikis.last.created_at %></sub>
             </div>
           </div>
         <% else %>

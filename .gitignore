@@ -27,3 +27,11 @@
 # Ignore application configuration
 /config/application.yml
 
+app/models/collaborator.rb
+db/migrate/20161207152322_create_collaborators.rb
+db:reset
+db:seed
+db:setup
+spec/factories/collaborators.rb
+spec/models/collaborator_spec.rb
+.env

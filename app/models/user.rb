@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :wiki
+  has_many :collaborators
+  has_many :wikis, through: :collaborators
 
   enum role: [:member, :premium, :admin]
   after_initialize :set_default_role, :if => :new_record?

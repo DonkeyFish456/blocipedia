@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :charges
   resources :subscribers
+  resources :collaborators
 
   get 'welcome/index'
 

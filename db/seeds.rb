@@ -22,14 +22,16 @@ User.create!(
 end
 
 25.times do
-  Wiki.create!(
+  @wiki = Wiki.create!(
           title: Faker::Hacker.say_something_smart,
           body: Faker::Lorem.paragraph,
           private: false,
           user_id: Faker::Number.between(1, 25)
   )
+  Collaborator.create!(wiki_id: @wiki.id, user_id: @wiki.user_id)
 end
 
 
 puts "Added #{User.count} users"
 puts "Added #{Wiki.count} wiki's"
+puts "Added #{Collaborator.count} collaborator's"

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', git: 'https://github.com/rails/rails', branch: '5-0-stable'
 # Use sqlite3 as the database for Active Record
@@ -27,6 +27,7 @@ gem 'pundit'
 gem 'faker'
 gem 'stripe'
 gem 'figaro'
+
 
 group :production do
   'pg'

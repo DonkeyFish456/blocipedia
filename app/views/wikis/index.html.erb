@@ -6,10 +6,10 @@
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <p><%= link_to wiki.title, wiki %></p>
+        <p><%= link_to wiki['title'], wiki_path(wiki['id']) %></p>
       </h4>
-      <p class="preview"><%= wiki.body %></p>
-      <sup class="stamp">Last updated at <%= wiki.updated_at %>   |   Created by: <%= wiki.user.username %> </sup>
+      <p class="preview"><%= wiki['body'] %></p>
+      <sup>created by <%= wiki['wiki_owner'] %> with <%= (wiki['collaborator_count'])-1 %> collaborators.</sup>
     </div>
   </div>
 <% end %>
